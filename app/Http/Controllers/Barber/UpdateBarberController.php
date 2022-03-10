@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Doctor;
+namespace App\Http\Controllers\Barber;
 use \Crypt;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use DB;
 use Image;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-class UpdateDoctorController extends Controller
+class UpdateBarberController extends Controller
 {
     
     public function updatedoctor(REQUEST $request){

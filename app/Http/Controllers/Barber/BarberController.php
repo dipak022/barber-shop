@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Doctor;
+namespace App\Http\Controllers\Barber;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Doctor;
 use Illuminate\Support\Facades\Auth;
 use DB;
-class DoctorController extends Controller
+class BarberController extends Controller
 {
     function create(Request $request){
           //Validate inputs

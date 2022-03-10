@@ -3,17 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Doctor\DoctorController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\Doctor\BarberController;
+
 
 Route::get('/', function () {
     return view('dashboard.user.index');
@@ -42,7 +33,7 @@ Route::prefix('user')->name('user.')->group(function(){
 
 // delete/appoinment/user/
 Route::get('delete/appoinment/user/{id}', [App\Http\Controllers\User\UserLogicController::class, 'DeleteUserCancelAppinment']);
-//doctor/account/permition/
+//account/permition/
 Route::get('doctor/account/permition/{id}', [App\Http\Controllers\HomeController::class, 'DoctorAccountPermition']);
 
 
@@ -122,34 +113,34 @@ Route::prefix('doctor')->name('doctor.')->group(function(){
        Route::middleware(['guest:doctor','PreventBackHistory'])->group(function(){
             Route::view('/login','dashboard.doctor.login')->name('login');
             Route::view('/register','dashboard.doctor.register')->name('register');
-            Route::post('/create',[DoctorController::class,'create'])->name('create');
-            Route::post('/check',[DoctorController::class,'check'])->name('check');
+            Route::post('/create',[BarberController::class,'create'])->name('create');
+            Route::post('/check',[BarberController::class,'check'])->name('check');
        });
 
        Route::middleware(['auth:doctor','PreventBackHistory'])->group(function(){
             //Route::view('/home','dashboard.doctor.deshbord')->name('home');
-            Route::post('logout',[DoctorController::class,'logout'])->name('logout');
-            Route::get('/home',[DoctorController::class,'home'])->name('home');
+            Route::post('logout',[BarberController::class,'logout'])->name('logout');
+            Route::get('/home',[BarberController::class,'home'])->name('home');
        });
 
 });
 //user-profile-update-account
-Route::post('doctor-profile-update-account/', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'userProfileUpdateAccount'])->name('user-profile-update-account');
+Route::post('doctor-profile-update-account/', [App\Http\Controllers\Barber\UpdateBarberController::class, 'userProfileUpdateAccount'])->name('user-profile-update-account');
 //user-passchange
-Route::post('password/change/', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'PassChange'])->name('user-passchange');
+Route::post('password/change/', [App\Http\Controllers\Barber\UpdateBarberController::class, 'PassChange'])->name('user-passchange');
 //
-Route::get('doctor-profile/', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'doctorprofile'])->name('doctor.profile');
-Route::post('doctor-profile-update/', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'updatedoctor'])->name('doctor-profile-update');
-//doctor-profile-stores
-Route::post('doctor-store/', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'storesDoctor'])->name('doctor-profile-stores');
-Route::get('all-doctor.appoinmemt/', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'allDoctorAppoinment'])->name('all.doctor.appoinmemt');
-Route::get('confirm/appoinment/{id}', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'ConfirmAppoinment']);
-Route::get('cencel/appoinment/{id}', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'CancelAppoinment']);
-Route::get('delete/appoinment/{id}', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'DeleteAppoinment']);
+Route::get('doctor-profile/', [App\Http\Controllers\Barber\UpdateBarberController::class, 'doctorprofile'])->name('doctor.profile');
+Route::post('doctor-profile-update/', [App\Http\Controllers\Barber\UpdateBarberController::class, 'updatedoctor'])->name('doctor-profile-update');
+//profile-stores
+Route::post('doctor-store/', [App\Http\Controllers\Barber\UpdateBarberController::class, 'storesDoctor'])->name('doctor-profile-stores');
+Route::get('all-doctor.appoinmemt/', [App\Http\Controllers\Barber\UpdateBarberController::class, 'allDoctorAppoinment'])->name('all.doctor.appoinmemt');
+Route::get('confirm/appoinment/{id}', [App\Http\Controllers\Barber\UpdateBarberController::class, 'ConfirmAppoinment']);
+Route::get('cencel/appoinment/{id}', [App\Http\Controllers\Barber\UpdateBarberController::class, 'CancelAppoinment']);
+Route::get('delete/appoinment/{id}', [App\Http\Controllers\Barber\UpdateBarberController::class, 'DeleteAppoinment']);
 
 //done/appoinment/
-Route::get('done/appoinment/{id}', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'DoneAppoinment']);
+Route::get('done/appoinment/{id}', [App\Http\Controllers\Barber\UpdateBarberController::class, 'DoneAppoinment']);
 
 //category/doctor/list route here 
-Route::get('category/doctor/list/{id}', [App\Http\Controllers\Doctor\UpdateDoctorController::class, 'category_doctor_list']);
+Route::get('category/doctor/list/{id}', [App\Http\Controllers\Barber\UpdateBarberController::class, 'category_doctor_list']);
 

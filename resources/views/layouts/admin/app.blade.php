@@ -298,7 +298,31 @@
              
             </ul>
           </li>
-        
+          {{-- Image MAnage --}}
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Image Manage
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('team') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Image</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('all.team') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>All Image</p>
+                </a>
+              </li>
+             
+            </ul>
+          </li>
 
           {{-- about --}}
           <li class="nav-item">
